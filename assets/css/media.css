@@ -1,0 +1,27 @@
+@media (max-width: 1000px) {
+    .SignUp-section {
+   display: flex;
+    justify-content: center;
+    }
+  .container-SignUp {
+        flex-direction: column;
+       
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .image-section-SignUp {
+        height: 250px; 
+    }
+
+    .form-section {
+        padding: 30px 20px;
+    }
+  }
+  @media (max-width: 480px) {
+  .SignUp-section .login-forget {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
