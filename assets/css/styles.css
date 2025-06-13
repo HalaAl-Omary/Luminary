@@ -477,8 +477,8 @@ footer .about-section ul {
   background-color: var(--browen);
   border: var(--brow-f) solid 1px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-   border-radius: 12px;
-   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .about-card-person .card:hover {
   transform: translateY(-5px);
@@ -496,22 +496,19 @@ footer .about-section ul {
   font-size: 12px;
 }
 
-
-
-.about-delivery-card{
+.about-delivery-card {
   margin-right: 20px;
-   margin-left: 20px;
+  margin-left: 20px;
 }
 .about-delivery-card .card-body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-self: center;
-   padding: 20px;
- 
+  padding: 20px;
 }
 
-.about-delivery-card .card{
+.about-delivery-card .card {
   border: none;
 }
 .about-delivery-card {
@@ -519,12 +516,150 @@ footer .about-section ul {
   overflow: hidden;
 }
 
-.about-delivery-card h5{
+.about-delivery-card h5 {
   margin-top: 10px;
   font-family: "Inter", sans-serif;
   font-size: 16px;
 }
-.about-delivery-card p{
+.about-delivery-card p {
   font-family: "Inter", sans-serif;
   font-size: 10px;
+}
+
+.Contact-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  width: 100%;
+}
+
+.container-Contact-page {
+  display: flex;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  max-width: 1000px;
+  width: 100%;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.container-Contact-page:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px var(--brow-f);
+}
+
+.Contact-page-call {
+  flex: 1;
+  padding: 40px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  border-right: 1px solid #eee;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contact-card .icon-wrapper {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.Contact-page-call h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.Contact-page-call p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.Contact-page-call hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 20px 0;
+  width: 80%;
+}
+
+.Contact-page-form {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.Contact-page-form input[type="text"],
+.Contact-page-form input[type="email"],
+.Contact-page-form input[type="tel"] {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.Contact-page-form input::placeholder,
+.Contact-page-form textarea::placeholder {
+  color: #aaa;
+}
+
+.Contact-page-form input:focus,
+.Contact-page-form textarea:focus {
+  outline: none;
+  border-color: #e67e22;
+  box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
+}
+
+.Contact-page-form textarea {
+  width: calc(100% - 30px);
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f9f9f9;
+  min-height: 180px;
+  resize: vertical;
+  margin-bottom: 20px;
+}
+
+.Contact-page-form button {
+  
+  padding: 12px 30px;
+  background-color: var(--browen-g);
+  color: var(--whitee);
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  -webkit-transition: background-color 0.3s ease;
+  -moz-transition: background-color 0.3s ease;
+  -ms-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+}
+
+.Contact-page-form button:hover {
+  background-color: var(--brow-f);
 }

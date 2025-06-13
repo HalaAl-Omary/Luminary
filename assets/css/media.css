@@ -47,3 +47,63 @@
  max-width: 100% ;
 }
 }
+
+
+
+@media (max-width: 480px) {
+    .Contact-page-call, .Contact-page-form {
+        padding: 20px;
+    }
+
+    .Contact-page-call h3 {
+        font-size: 18px;
+    }
+
+    .Contact-page-call p,
+    .Contact-page-form input,
+    .Contact-page-form textarea {
+        font-size: 13px;
+    }
+
+    .Contact-page-form button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+  .Contact-page{
+    margin-top: 80px;
+  }
+    .container-Contact-page {
+        flex-direction: column;
+        max-width: 90%;
+    }
+
+    .Contact-page-call {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding: 30px;
+    }
+
+    .Contact-page-form {
+        padding: 30px;
+    }
+
+    .Contact-page-form .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .Contact-page-form input[type="text"],
+    .Contact-page-form input[type="email"],
+    .Contact-page-form input[type="tel"],
+    .Contact-page-form textarea {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .Contact-page-form button {
+        width: 100%;
+        align-self: center;
+    }}
