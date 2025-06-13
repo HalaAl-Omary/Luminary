@@ -1,4 +1,4 @@
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
     .SignUp-section {
    display: flex;
     justify-content: center;
@@ -17,6 +17,19 @@
     .form-section {
         padding: 30px 20px;
     }
+
+    .header-about{
+      display: flex;
+      flex-direction: column;
+    }
+    .container-about{
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    .container-about .contant-about{
+      text-align: center;
+      margin-top: 10px;
+    }
   }
   @media (max-width: 480px) {
   .SignUp-section .login-forget {
@@ -24,4 +37,13 @@
     align-items: flex-start;
     gap: 8px;
   }
+}
+
+@media (max-width: 570px) {
+.about-card-sales .card ,.about-card-sales .card-2color  {
+ max-width: 100% ;
+}
+.about-delivery-card .card   {
+ max-width: 100% ;
+}
 }
