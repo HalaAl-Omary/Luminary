@@ -141,3 +141,30 @@
     margin-top: 10px;
   }
 }
+@media (max-width: 1500px) {
+  .header-home-slider {
+    height: 70vh;
+  }
+
+  .header-home-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .header-home-content p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .header-home-slider {
+    height: 60vh;
+  }
+
+  .header-home-content h1 {
+    font-size: 1.2rem;
+  }
+
+  .header-home-content p {
+    font-size: 0.8rem;
+  }
+}

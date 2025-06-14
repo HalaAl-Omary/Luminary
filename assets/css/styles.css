@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Parisienne&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -46,6 +48,114 @@ nav ol {
 nav ol a {
   color: gray;
 }
+
+.header-home {
+  overflow: hidden;
+}
+
+.header-home-slider {
+  width: 100vw;
+  height: 90vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-home-slider figure {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+  animation: fade 16s infinite;
+  opacity: 0;
+  -webkit-animation: fade 16s infinite;
+}
+
+.header-home-slider figure:nth-child(1) {
+  background-image: url(/assets/images/header7.png);
+  animation-delay: 0s;
+}
+.header-home-slider figure:nth-child(2) {
+  background-image: url(/assets/images/header2.png);
+  animation-delay: -2s;
+}
+.header-home-slider figure:nth-child(3) {
+  background-image: url(/assets/images/header3.png);
+  animation-delay: -4s;
+}
+.header-home-slider figure:nth-child(4) {
+  background-image: url(/assets/images/hrader4.png);
+  animation-delay: -6s;
+}
+.header-home-slider figure:nth-child(5) {
+  background-image: url(/assets/images/header5.png);
+  animation-delay: -8s;
+}
+.header-home-slider figure:nth-child(6) {
+  background-image: url(/assets/images/header6.png);
+  animation-delay: -10s;
+}
+.header-home-slider figure:nth-child(7) {
+  background-image: url(/assets/images/header8.png);
+  animation-delay: -12s;
+}
+.header-home-slider figure:nth-child(8) {
+  background-image: url(/assets/images/header1.png);
+  animation-delay: -14s;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.header-home-slider::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.header-home-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--whitee);
+  z-index: 2;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+.header-home-content h1 {
+  font-family: "Parisienne", cursive;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.header-home-content p {
+  font-family: "Parisienne", cursive;
+}
+
 .form-control.me-1 {
   border: 1px solid #ccc;
   border-radius: 5px;
