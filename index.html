@@ -1,85 +1,387 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Luminary</title>
-    <link rel="icon" href="assets/images/logo.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/styles.css">
-     <link rel="stylesheet" href="assets/css/media.css">
+    <link rel="icon" href="assets/images/logo.png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/media.css" />
   </head>
   <body>
-     <nav class="navbar navbar-expand-lg px-4 py-3">
-  <div class="container-fluid">
-    <a class="navbar-brand px-4" href="#">
-      <img src="assets/images/logonav.jpeg" alt="" />
-    </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active px-4" aria-current="page" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active px-4" aria-current="page" href="Contact.html">Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active px-4" aria-current="page" href="About.html">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active px-4" aria-current="page" href="SignUp.html">Sign Up</a>
-        </li>
-      </ul>
-      <form class="d-flex search-form " role="search">
-        <input class="form-control me-1" type="search" placeholder="What are you looking for?" aria-label="Search" />
-        <button class="btn" type="submit">
-          <svg width="18" height="15" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17 17L13.2223 13.2156M15.3158 8.15789C15.3158 10.0563 14.5617 11.8769 13.2193 13.2193C11.8769 14.5617 10.0563 15.3158 8.15789 15.3158C6.2595 15.3158 4.43886 14.5617 3.0965 13.2193C1.75413 11.8769 1 10.0563 1 8.15789C1 6.2595 1.75413 4.43886 3.0965 3.0965C4.43886 1.75413 6.2595 1 8.15789 1C10.0563 1 11.8769 1.75413 13.2193 3.0965C14.5617 4.43886 15.3158 6.2595 15.3158 8.15789V8.15789Z" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+    <nav class="navbar navbar-expand-lg px-4 py-3">
+      <div class="container-fluid">
+        <a class="navbar-brand px-4" href="#">
+          <img src="assets/images/logonav.jpeg" alt="" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
         </button>
-      </form>
-      <ul class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item px-1">
-          <a class="nav-link active" aria-current="page" href="WishList.html">
-            <svg width="18" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 1C3.239 1 1 3.216 1 5.95C1 8.157 1.875 13.395 10.488 18.69C10.6423 18.7839 10.8194 18.8335 11 18.8335C11.1806 18.8335 11.3577 18.7839 11.512 18.69C20.125 13.395 21 8.157 21 5.95C21 3.216 18.761 1 16 1C13.239 1 11 4 11 4C11 4 8.761 1 6 1Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </li>
-        <li class="nav-item px-1">
-          <a class="nav-link active" aria-current="page" href="Cart.html">
-            <svg width="22" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M11 27C11.5523 27 12 26.5523 12 26C12 25.4477 11.5523 25 11 25C10.4477 25 10 25.4477 10 26C10 26.5523 10.4477 27 11 27Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M25 27C25.5523 27 26 26.5523 26 26C26 25.4477 25.5523 25 25 25C24.4477 25 24 25.4477 24 26C24 26.5523 24.4477 27 25 27Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M3 5H7L10 22H26" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M10 16.6667H25.59C25.7056 16.6667 25.8177 16.6267 25.9072 16.5535C25.9966 16.4802 26.0579 16.3782 26.0806 16.2648L27.8806 7.26479C27.8951 7.19222 27.8934 7.11733 27.8755 7.04552C27.8575 6.97371 27.8239 6.90678 27.7769 6.84956C27.73 6.79234 27.6709 6.74625 27.604 6.71462C27.5371 6.68299 27.464 6.66661 27.39 6.66666H8" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </li>
-        <li class="nav-item px-1">
-          <a class="nav-link active" aria-current="page" href="Account.html">
-            <svg width="22" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 27V24.3333C24 22.9188 23.5224 21.5623 22.6722 20.5621C21.8221 19.5619 20.669 19 19.4667 19H11.5333C10.331 19 9.17795 19.5619 8.32778 20.5621C7.47762 21.5623 7 22.9188 7 24.3333V27" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M16.5 14C18.9853 14 21 11.9853 21 9.5C21 7.01472 18.9853 5 16.5 5C14.0147 5 12 7.01472 12 9.5C12 11.9853 14.0147 14 16.5 14Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active px-4"
+                aria-current="page"
+                href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active px-4"
+                aria-current="page"
+                href="Contact.html"
+                >Contact</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active px-4"
+                aria-current="page"
+                href="About.html"
+                >About</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active px-4"
+                aria-current="page"
+                href="SignUp.html"
+                >Sign Up</a
+              >
+            </li>
+          </ul>
+          <form class="d-flex search-form" role="search">
+            <input
+              class="form-control me-1"
+              type="search"
+              placeholder="What are you looking for?"
+              aria-label="Search"
+            />
+            <button class="btn" type="submit">
+              <svg
+                width="18"
+                height="15"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17 17L13.2223 13.2156M15.3158 8.15789C15.3158 10.0563 14.5617 11.8769 13.2193 13.2193C11.8769 14.5617 10.0563 15.3158 8.15789 15.3158C6.2595 15.3158 4.43886 14.5617 3.0965 13.2193C1.75413 11.8769 1 10.0563 1 8.15789C1 6.2595 1.75413 4.43886 3.0965 3.0965C4.43886 1.75413 6.2595 1 8.15789 1C10.0563 1 11.8769 1.75413 13.2193 3.0965C14.5617 4.43886 15.3158 6.2595 15.3158 8.15789V8.15789Z"
+                  stroke="black"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </button>
+          </form>
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item px-1">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="WishList.html"
+              >
+                <svg
+                  width="18"
+                  height="20"
+                  viewBox="0 0 22 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 1C3.239 1 1 3.216 1 5.95C1 8.157 1.875 13.395 10.488 18.69C10.6423 18.7839 10.8194 18.8335 11 18.8335C11.1806 18.8335 11.3577 18.7839 11.512 18.69C20.125 13.395 21 8.157 21 5.95C21 3.216 18.761 1 16 1C13.239 1 11 4 11 4C11 4 8.761 1 6 1Z"
+                    stroke="black"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </li>
+            <li class="nav-item px-1">
+              <a class="nav-link active" aria-current="page" href="Cart.html">
+                <svg
+                  width="22"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11 27C11.5523 27 12 26.5523 12 26C12 25.4477 11.5523 25 11 25C10.4477 25 10 25.4477 10 26C10 26.5523 10.4477 27 11 27Z"
+                    stroke="black"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M25 27C25.5523 27 26 26.5523 26 26C26 25.4477 25.5523 25 25 25C24.4477 25 24 25.4477 24 26C24 26.5523 24.4477 27 25 27Z"
+                    stroke="black"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M3 5H7L10 22H26"
+                    stroke="black"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M10 16.6667H25.59C25.7056 16.6667 25.8177 16.6267 25.9072 16.5535C25.9966 16.4802 26.0579 16.3782 26.0806 16.2648L27.8806 7.26479C27.8951 7.19222 27.8934 7.11733 27.8755 7.04552C27.8575 6.97371 27.8239 6.90678 27.7769 6.84956C27.73 6.79234 27.6709 6.74625 27.604 6.71462C27.5371 6.68299 27.464 6.66661 27.39 6.66666H8"
+                    stroke="black"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </li>
+            <li class="nav-item px-1">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="Account.html"
+              >
+                <svg
+                  width="22"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24 27V24.3333C24 22.9188 23.5224 21.5623 22.6722 20.5621C21.8221 19.5619 20.669 19 19.4667 19H11.5333C10.331 19 9.17795 19.5619 8.32778 20.5621C7.47762 21.5623 7 22.9188 7 24.3333V27"
+                    stroke="black"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M16.5 14C18.9853 14 21 11.9853 21 9.5C21 7.01472 18.9853 5 16.5 5C14.0147 5 12 7.01472 12 9.5C12 11.9853 14.0147 14 16.5 14Z"
+                    stroke="black"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+   
+    <main>
+     
 
+
+      <section class="about-delivery-card">
+        <div class="containerabout-delivery-card">
+          <div class="row g-5">
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <svg
+                    width="65"
+                    height="80"
+                    viewBox="0 0 81 80"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      opacity="0.3"
+                      d="M80.5 40C80.5 62.0914 62.5914 80 40.5 80C18.4086 80 0.5 62.0914 0.5 40C0.5 17.9086 18.4086 0 40.5 0C62.5914 0 80.5 17.9086 80.5 40ZM11.4071 40C11.4071 56.0675 24.4325 69.0929 40.5 69.0929C56.5675 69.0929 69.5929 56.0675 69.5929 40C69.5929 23.9325 56.5675 10.9071 40.5 10.9071C24.4325 10.9071 11.4071 23.9325 11.4071 40Z"
+                      fill="#2F2E30"
+                    />
+                    <circle cx="40.5" cy="40" r="29" fill="black" />
+                    <g clip-path="url(#clip0_856_3513)">
+                      <path
+                        d="M32.1663 51.6667C34.0073 51.6667 35.4997 50.1743 35.4997 48.3333C35.4997 46.4924 34.0073 45 32.1663 45C30.3254 45 28.833 46.4924 28.833 48.3333C28.833 50.1743 30.3254 51.6667 32.1663 51.6667Z"
+                        stroke="#FAFAFA"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M48.8333 51.6667C50.6743 51.6667 52.1667 50.1743 52.1667 48.3333C52.1667 46.4924 50.6743 45 48.8333 45C46.9924 45 45.5 46.4924 45.5 48.3333C45.5 50.1743 46.9924 51.6667 48.8333 51.6667Z"
+                        stroke="#FAFAFA"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M28.833 48.3335H27.4997C26.3951 48.3335 25.4997 47.4381 25.4997 46.3335V41.6668M23.833 28.3335H40.1663C41.2709 28.3335 42.1663 29.2289 42.1663 30.3335V48.3335M35.4997 48.3335H45.4997M52.1663 48.3335H53.4997C54.6042 48.3335 55.4997 47.4381 55.4997 46.3335V38.3335M55.4997 38.3335H42.1663M55.4997 38.3335L51.0823 30.9712C50.7208 30.3688 50.0698 30.0002 49.3673 30.0002H42.1663"
+                        stroke="#FAFAFA"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M28.5 48H27.1667C26.0621 48 25.1667 47.1046 25.1667 46V41.3333M23.5 28H39.8333C40.9379 28 41.8333 28.8954 41.8333 30V48M35.5 48H45.1667M52.5 48H53.1667C54.2712 48 55.1667 47.1046 55.1667 46V38M55.1667 38H41.8333M55.1667 38L50.7493 30.6377C50.3878 30.0353 49.7368 29.6667 49.0343 29.6667H41.8333"
+                        stroke="#FAFAFA"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M25.5 31.8181H32.1667"
+                        stroke="#FAFAFA"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M22.3184 35.4546H28.985"
+                        stroke="#FAFAFA"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M25.5 39.0908H32.1667"
+                        stroke="#FAFAFA"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_856_3513">
+                        <rect
+                          width="40"
+                          height="40"
+                          fill="white"
+                          transform="translate(20.5 20)"
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+
+                  <h5>FREE AND FAST DELIVERY</h5>
+                  <p class="card-text">
+                    Free delivery for all orders over $140
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <svg
+                    width="65"
+                    height="80"
+                    viewBox="0 0 80 80"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      opacity="0.3"
+                      d="M80 40C80 62.0914 62.0914 80 40 80C17.9086 80 0 62.0914 0 40C0 17.9086 17.9086 0 40 0C62.0914 0 80 17.9086 80 40ZM10.9071 40C10.9071 56.0675 23.9325 69.0929 40 69.0929C56.0675 69.0929 69.0929 56.0675 69.0929 40C69.0929 23.9325 56.0675 10.9071 40 10.9071C23.9325 10.9071 10.9071 23.9325 10.9071 40Z"
+                      fill="#2F2E30"
+                    />
+                    <circle cx="40" cy="40" r="29" fill="black" />
+                    <g clip-path="url(#clip0_856_3530)">
+                      <path
+                        d="M33.3337 45.0001C33.3337 43.1591 31.8413 41.6667 30.0003 41.6667C28.1594 41.6667 26.667 43.1591 26.667 45.0001V48.3334C26.667 50.1744 28.1594 51.6667 30.0003 51.6667C31.8413 51.6667 33.3337 50.1744 33.3337 48.3334V45.0001Z"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M53.3337 45.0001C53.3337 43.1591 51.8413 41.6667 50.0003 41.6667C48.1594 41.6667 46.667 43.1591 46.667 45.0001V48.3334C46.667 50.1744 48.1594 51.6667 50.0003 51.6667C51.8413 51.6667 53.3337 50.1744 53.3337 48.3334V45.0001Z"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M26.667 45.0001V40.0001C26.667 36.4639 28.0718 33.0725 30.5722 30.572C33.0727 28.0715 36.4641 26.6667 40.0003 26.6667C43.5365 26.6667 46.9279 28.0715 49.4284 30.572C51.9289 33.0725 53.3337 36.4639 53.3337 40.0001V45.0001"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M50 51.6667C50 52.9928 48.9464 54.2646 47.0711 55.2023C45.1957 56.14 42.6522 56.6667 40 56.6667"
+                        stroke="white"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_856_3530">
+                        <rect
+                          width="40"
+                          height="40"
+                          fill="white"
+                          transform="translate(20 20)"
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+
+                  <h5>24/7 CUSTOMER SERVICE</h5>
+                  <p class="card-text">Friendly 24/7 customer support</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card h-100">
+                <div class="card-body">
+                  <svg
+                    width="65"
+                    height="80"
+                    viewBox="0 0 80 80"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      opacity="0.3"
+                      d="M80 40C80 62.0914 62.0914 80 40 80C17.9086 80 0 62.0914 0 40C0 17.9086 17.9086 0 40 0C62.0914 0 80 17.9086 80 40ZM10.9071 40C10.9071 56.0675 23.9325 69.0929 40 69.0929C56.0675 69.0929 69.0929 56.0675 69.0929 40C69.0929 23.9325 56.0675 10.9071 40 10.9071C23.9325 10.9071 10.9071 23.9325 10.9071 40Z"
+                      fill="#2F2E30"
+                    />
+                    <circle cx="40" cy="40" r="29" fill="black" />
+                    <path
+                      d="M39.9834 22.5874C41.0048 22.5874 42.0044 22.7357 42.7578 23.0171V23.0181L51.0752 26.1353H51.0762C53.2957 26.962 55.0508 29.5076 55.0508 31.8667V44.2495C55.0508 45.3367 54.7066 46.5895 54.124 47.7485C53.578 48.8348 52.8406 49.8024 52.0312 50.4556L51.8682 50.5825L44.7012 55.9321L44.6953 55.937C43.4126 56.9261 41.724 57.4331 40 57.4331C38.2773 57.433 36.5849 56.9263 35.2646 55.9478H35.2637L28.0996 50.5991C27.2269 49.9484 26.4256 48.9208 25.8428 47.7593C25.2599 46.5976 24.917 45.3447 24.917 44.2661V31.8667C24.917 29.5812 26.5637 27.1204 28.6846 26.2173L28.8916 26.1353H28.8926L37.209 23.0181C37.9624 22.7365 38.9618 22.5874 39.9834 22.5874ZM40.001 24.0854C39.3021 24.0874 38.5817 24.1702 37.9883 24.3491L37.7422 24.4312L37.7412 24.4321L29.4248 27.5483H29.4238C28.5963 27.8599 27.8551 28.5225 27.3242 29.2905C26.7931 30.0589 26.4336 30.9898 26.4336 31.8833V44.2661C26.4336 45.1606 26.7442 46.1893 27.2012 47.1011C27.6009 47.8986 28.1375 48.6561 28.7393 49.187L29.001 49.4009L36.168 54.7505C37.2298 55.5444 38.6284 55.9252 40.002 55.9253C41.2901 55.9253 42.6032 55.5902 43.6436 54.895L43.8477 54.7515L43.8496 54.7505L51.0156 49.4009L51.0166 49.3999C51.7314 48.8638 52.3669 48.0049 52.8223 47.0942C53.2776 46.1836 53.584 45.1596 53.584 44.2661V31.8667C53.584 30.9807 53.2236 30.0539 52.6934 29.2866C52.1961 28.5672 51.5145 27.9379 50.752 27.5981L50.5977 27.5337L50.5928 27.5317L42.2754 24.4146L42.2666 24.4116L42.0186 24.3325C41.4217 24.162 40.7003 24.0835 40.001 24.0854Z"
+                      fill="#FAFAFA"
+                      stroke="#FAFAFA"
+                    />
+                    <path
+                      d="M44.4043 34.77C44.6743 34.5003 45.1158 34.4832 45.4072 34.7192L45.4639 34.77C45.734 35.0402 45.7503 35.4824 45.5137 35.7739L45.4639 35.8296L38.2969 42.9966C38.1456 43.1478 37.9578 43.2163 37.7666 43.2163C37.5995 43.2162 37.4356 43.1637 37.2959 43.0493L37.2373 42.9966L34.5537 40.313C34.2839 40.043 34.267 39.6015 34.5029 39.3101L34.5537 39.2534C34.8238 38.9833 35.2661 38.9663 35.5576 39.2026L35.6133 39.2534L37.7666 41.4067L38.1211 41.0532L44.4043 34.77Z"
+                      fill="#FAFAFA"
+                      stroke="#FAFAFA"
+                    />
+                  </svg>
+
+                  <h5>MONEY BACK GUARANTEE</h5>
+                  <p class="card-text">We return money within 30 days</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
     <footer>
       <div class="container-footer">
         <div class="footer-section logo-section">
@@ -185,7 +487,11 @@
         </div>
       </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+      crossorigin="anonymous"
+    ></script>
     <script src="assets/scripts.js"></script>
   </body>
 </html>
