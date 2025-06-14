@@ -413,6 +413,7 @@ footer {
   margin-bottom: 30px;
 }
 .footer-section h4 {
+  font-size: 20px;
   color: var(--blackk) !important;
   margin-bottom: 15px;
 }
@@ -469,6 +470,7 @@ footer .about-section ul {
 
 .header-about {
   margin-top: 80px;
+  margin-bottom: 100px;
   margin-left: 40px;
   margin-right: 40px;
   display: flex;
@@ -485,9 +487,9 @@ footer .about-section ul {
 
 .container-about .img-about img {
   max-width: 100%;
-  height: 90%;
-  border: var(--browen) solid 10px;
+  height: 100%;
   border-radius: 100px;
+  border: var(--browen) solid 10px;
   animation: fadeInRight 1.2s ease forwards;
   animation-delay: 0.1s;
   -webkit-animation: fadeInRight 1.2s ease forwards;
@@ -520,7 +522,8 @@ footer .about-section ul {
   }
 }
 .container-about .contant-about h1 {
-  font-family: "Inter", sans-serif;
+  font-family: "Parisienne", cursive;
+  font-weight: 1000;
   color: var(--brow-f);
 }
 
@@ -608,7 +611,7 @@ footer .about-section ul {
   text-align: center;
 }
 .about-card-person .card-body h3 {
-  font-family: "Inter", sans-serif;
+  font-family: "Parisienne", cursive;
 }
 .about-card-person .card-body p {
   font-family: "Inter", sans-serif;
@@ -643,6 +646,17 @@ footer .about-section ul {
 .about-delivery-card p {
   font-family: "Inter", sans-serif;
   font-size: 10px;
+}
+
+.about-delivery-card .card {
+  transition: transform 0.3s ease;
+}
+.about-delivery-card .card:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
 }
 
 .Contact-page {
@@ -906,4 +920,74 @@ footer .about-section ul {
 
 .save-button:hover {
   background-color: var(--brow-f);
+}
+
+.home-Collections {
+  margin: 150px auto;
+  max-width: 1200px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.home-Collections-contant h4,
+.home-Collections-contant p {
+  font-family: "Parisienne", cursive;
+  text-align: center;
+  color: #555;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  -webkit-transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  -moz-transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  -ms-transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  -o-transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.home-Collections:hover .home-Collections-contant h4,
+.home-Collections:hover .home-Collections-contant p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.home-Collections:hover .home-Collections-contant p {
+  transition-delay: 0.2s;
+}
+
+.home-Collections-contant h4 {
+  margin-bottom: 20px;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.home-Collections-contant p {
+  margin-bottom: 50px;
+  font-size: 1.2em;
+}
+
+.home-Collections-img {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.home-Collections-img div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  min-width: 280px;
+}
+.home-Collections-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.home-Collections-img img:hover {
+  transform: scale(1.02);
 }
