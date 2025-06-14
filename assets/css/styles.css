@@ -74,35 +74,35 @@ nav ol a {
 }
 
 .header-home-slider figure:nth-child(1) {
-  background-image: url(/assets/images/header7.png);
+  background-image: url(../images/header7.png);
   animation-delay: 0s;
 }
 .header-home-slider figure:nth-child(2) {
-  background-image: url(/assets/images/header2.png);
+  background-image: url(../images/header2.png);
   animation-delay: -2s;
 }
 .header-home-slider figure:nth-child(3) {
-  background-image: url(/assets/images/header3.png);
+  background-image: url(../images/header3.png);
   animation-delay: -4s;
 }
 .header-home-slider figure:nth-child(4) {
-  background-image: url(/assets/images/hrader4.png);
+  background-image: url(../images/hrader4.png);
   animation-delay: -6s;
 }
 .header-home-slider figure:nth-child(5) {
-  background-image: url(/assets/images/header5.png);
+  background-image: url(../images/header5.png);
   animation-delay: -8s;
 }
 .header-home-slider figure:nth-child(6) {
-  background-image: url(/assets/images/header6.png);
+  background-image: url(../images/header6.png);
   animation-delay: -10s;
 }
 .header-home-slider figure:nth-child(7) {
-  background-image: url(/assets/images/header8.png);
+  background-image: url(../images/header8.png);
   animation-delay: -12s;
 }
 .header-home-slider figure:nth-child(8) {
-  background-image: url(/assets/images/header1.png);
+  background-image: url(../images/header1.png);
   animation-delay: -14s;
 }
 
