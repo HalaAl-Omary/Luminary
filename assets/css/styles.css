@@ -135,6 +135,7 @@ nav ol a {
 
 .header-home-content {
   position: absolute;
+  text-align: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -148,7 +149,6 @@ nav ol a {
 
 .header-home-content h1 {
   font-family: "Parisienne", cursive;
-  font-size: 2rem;
   margin-bottom: 1rem;
 }
 
@@ -991,3 +991,261 @@ footer .about-section ul {
 .home-Collections-img img:hover {
   transform: scale(1.02);
 }
+
+.products-section{
+  overflow: hidden;
+}
+.categories-section{
+  margin: 100px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  
+}
+
+.titel-categories{
+  text-align: center;
+  font-family: "Parisienne", cursive;
+}
+
+.categories button {
+  background: none;
+  border: none;
+  margin: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 5px;
+  color: #333;
+}
+
+.categories button::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: var(--browen);
+  left: 0;
+  bottom: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.categories button:hover::after {
+  width: 100%;
+}
+
+.categories button.active::after {
+  width: 100%;
+}
+
+.product-card {
+  background-color: var(--whitee);
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  -webkit-transition: transform 0.3s;
+  -moz-transition: transform 0.3s;
+  -ms-transition: transform 0.3s;
+  -o-transition: transform 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+
+.product-card button {
+  padding: 8px 14px;
+  background-color: var(--browen-g);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 14px;
+}
+
+.product-card button:hover {
+  background-color: var(--brow-f);
+}
+
+.wishlist-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  -moz-transition: transform 0.2s;
+  -ms-transition: transform 0.2s;
+  -o-transition: transform 0.2s;
+}
+
+.wishlist-icon:hover {
+  transform: scale(1.2);
+}
+.product-card .discount {
+  font-size: 14px;
+  color: red; 
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product-card {
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(211, 6, 6, 0.05);
+  position: relative;
+  height: 100%;
+}
+
+
+
+.product-card img {
+  max-width: 180px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.product-card h4 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 10px;
+}
+.product-card .cart-button {
+  margin: 0 auto;
+  display: block;
+  margin-top: 10px;
+}
+
+.product-card .price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+
+.product-card .price s {
+  color: #999; 
+}
+
+.product-card .discount {
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+
+.cart-button {
+  position: relative;
+  padding: 10px;
+  width: 180px;
+  height: 50px;
+  border: 0;
+  border-radius: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  color: #000;
+  overflow: hidden;
+  transition: 3s ease-in-out;
+}
+
+.cart-button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.cart-button:active {
+  transform: scale(0.95);
+}
+
+.cart-button .fa-shopping-cart {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: -10%;
+  font-size: 1.5rem;
+  transform: translate(-50%, -50%);
+}
+
+.cart-button .fa-box {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  font-size: 1rem;
+  transform: translate(-50%, -50%);
+}
+
+.cart-button span {
+  position: absolute;
+  left: 50%;
+  z-index: 3;
+  top: 50%;
+  font-size: 1.2em;
+  transform: translate(-50%, -50%);
+}
+
+.cart-button span.add-to-cart {
+  opacity: 1;
+}
+
+.cart-button span.added {
+  opacity: 0;
+}
+
+.cart-button.clicked .fa-shopping-cart {
+  animation: cart 1.5s ease-in-out forwards;
+}
+
+.cart-button.clicked .fa-box {
+  animation: box 1.5s ease-in-out forwards;
+}
+
+.cart-button.clicked span.add-to-cart {
+  animation: txt1 1.5s ease-in-out forwards;
+}
+
+.cart-button.clicked span.added {
+  animation: txt2 1.5s ease-in-out forwards;
+}
+
+@keyframes cart {
+  0% { left: -10%; }
+  40%, 60% { left: 50%; }
+  100% { left: 110%; }
+}
+
+@keyframes box {
+  0%, 40% { top: -20%; }
+  60% {
+    top: 40%;
+    left: 52%;
+  }
+  100% {
+    top: 40%;
+    left: 112%;
+  }
+}
+
+@keyframes txt1 {
+  0% { opacity: 1; }
+  20%, 100% { opacity: 0; }
+}
+
+@keyframes txt2 {
+  0%, 80% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
