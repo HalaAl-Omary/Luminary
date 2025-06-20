@@ -240,9 +240,9 @@ const products = [
     category: "Treatments",
   },
 ];
-
 function displayProducts(filteredProducts) {
   const ProuductsQ = document.getElementById("product-list");
+  if (!ProuductsQ) return;
   ProuductsQ.innerHTML = "";
 
   filteredProducts.forEach((product) => {
@@ -281,7 +281,8 @@ function displayProducts(filteredProducts) {
   });
 }
 
-displayProducts(products);
+if (document.getElementById("product-list")) displayProducts(products);
+
 const categoryButtons = document.querySelectorAll(".categories button");
 categoryButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -294,10 +295,177 @@ categoryButtons.forEach((btn) => {
 document.addEventListener("click", function (e) {
   if (e.target.closest(".cart-button")) {
     const button = e.target.closest(".cart-button");
-    button.classList.add("clicked");
+    const productId = parseInt(
+      button.closest(".product-card").querySelector(".wishlist-icon").dataset.id
+    );
+    const product = products.find((p) => p.id === productId);
 
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const existingProduct = cart.find((item) => item.id === productId);
+
+    if (existingProduct) {
+      existingProduct.quantity += 1;
+    } else {
+      cart.push({ ...product, quantity: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    button.classList.add("clicked");
     setTimeout(() => {
       button.classList.remove("clicked");
     }, 1500);
   }
+});
+
+const cartTableBody = document.getElementById("cart-table-body");
+const subtotalAmount = document.getElementById("subtotal-amount");
+const totalAmount = document.getElementById("total-amount");
+const deleteCartBtn = document.getElementById("delete-cart");
+const checkoutBtn = document.getElementById("checkout-btn");
+const totalItemsDisplay = document.getElementById("total-items");
+
+function updateCartHTML() {
+  if (!cartTableBody) return;
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cartTableBody.innerHTML = "";
+  let subtotal = 0;
+  let totalItems = 0;
+
+  cart.forEach((item, index) => {
+    const productSubtotal = item.salePrice * item.quantity;
+    subtotal += productSubtotal;
+    totalItems += item.quantity;
+
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td><img src="${item.image}" width="60"/></td>
+      <td>${item.name}</td>
+      <td>$${item.salePrice}</td>
+      <td>
+        <div class="quantity-controls" data-index="${index}">
+          <button class="mx-2 btn btn-sm btn-outline-secondary decrease">−</button>
+          <span class="mx-2 quantity-display">${item.quantity}</span>
+          <button class="mx-2 btn btn-sm btn-outline-secondary increase">+</button>
+        </div>
+      </td>
+      <td>$${productSubtotal}</td>
+      <td>
+     <button class="mx-3 btn delete-btn" data-index="${index}">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#dc3545" viewBox="0 0 24 24">
+      <path d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7a1 1 0 0 0-1.41 1.41L10.59 12l-4.89 4.89a1 1 0 1 0 1.41 1.41L12 13.41l4.89 4.89a1 1 0 0 0 1.41-1.41L13.41 12l4.89-4.89a1 1 0 0 0 0-1.4z"/>
+     </svg>
+    </button>
+</td>
+
+    `;
+    cartTableBody.appendChild(row);
+  });
+
+  if (subtotalAmount) subtotalAmount.textContent = `$${subtotal}`;
+  if (totalAmount) totalAmount.textContent = `$${subtotal}`;
+  if (totalItemsDisplay) totalItemsDisplay.textContent = `${totalItems} items`;
+}
+
+if (cartTableBody) {
+  cartTableBody.addEventListener("click", (e) => {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (e.target.closest(".increase") || e.target.closest(".decrease")) {
+      const index = e.target.closest(".quantity-controls").dataset.index;
+      if (e.target.closest(".increase")) {
+        cart[index].quantity += 1;
+      } else if (e.target.closest(".decrease") && cart[index].quantity > 1) {
+        cart[index].quantity -= 1;
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartHTML();
+    }
+
+    const deleteBtn = e.target.closest(".delete-btn");
+    if (deleteBtn) {
+      const index = deleteBtn.dataset.index;
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          cart.splice(index, 1);
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCartHTML();
+          Swal.fire("Deleted!", "The item has been removed.", "success");
+        }
+      });
+    }
+  });
+}
+
+if (deleteCartBtn) {
+  deleteCartBtn.addEventListener("click", () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete all!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("cart");
+        updateCartHTML();
+        Swal.fire("Deleted!", "All items have been removed.", "success");
+      }
+    });
+  });
+}
+
+if (checkoutBtn) {
+  checkoutBtn.addEventListener("click", () => {
+    window.location.href = "CheckOut.html";
+  });
+}
+
+updateCartHTML();
+document.addEventListener("DOMContentLoaded", () => {
+  const placeOrderBtn = document.getElementById("place-order");
+  const form = document.getElementById("checkout-form");
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let total = cart.reduce(
+    (sum, item) => sum + item.salePrice * item.quantity,
+    0
+  );
+  document.getElementById("subtotal").textContent = `$${total}`;
+  document.getElementById("total").textContent = `$${total}`;
+
+  placeOrderBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("fullname").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+
+    if (!name || !address || !phone) {
+      Swal.fire("Error", "Please fill in all required fields.", "error");
+      return;
+    }
+
+    localStorage.removeItem("cart");
+
+    Swal.fire({
+      icon: "success",
+      title: "Order sent successfully",
+      text: "We will contact you soon to deliver your order.",
+    }).then(() => {
+      form.reset();
+      window.location.href = "index.html";
+    });
+  });
 });
