@@ -1403,3 +1403,33 @@ input.form-control.me-2 {
   border-radius: 4px;
   border: 1px solid #ccc;
 }
+
+.remove-wishlist {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 5px;
+  transition: transform 0.2s;
+}
+
+.remove-wishlist:hover {
+  transform: scale(1.1);
+  background-color: #ffeaea;
+}
+#clear-wishlist{
+  background-color: var(--browen-g);
+  color: var(--whitee);
+}
+#clear-wishlist:hover{
+  background-color: var(--brow-f);
+}
+#move-to-cart{
+  background-color: var(--browen-g);
+  color: var(--whitee);
+}
+#move-to-cart:hover{
+  background-color: var(--brow-f);
+}

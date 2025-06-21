@@ -291,7 +291,6 @@ categoryButtons.forEach((btn) => {
     displayProducts(filtered);
   });
 });
-
 document.addEventListener("click", function (e) {
   if (e.target.closest(".cart-button")) {
     const button = e.target.closest(".cart-button");
@@ -303,10 +302,28 @@ document.addEventListener("click", function (e) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const existingProduct = cart.find((item) => item.id === productId);
 
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      background: "#fff",
+      color: "#000",
+    });
+
     if (existingProduct) {
       existingProduct.quantity += 1;
+      Toast.fire({
+        icon: "info",
+        title: "Quantity updated in cart",
+      });
     } else {
       cart.push({ ...product, quantity: 1 });
+      Toast.fire({
+        icon: "success",
+        title: "Added to cart",
+      });
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -317,7 +334,6 @@ document.addEventListener("click", function (e) {
     }, 1500);
   }
 });
-
 const cartTableBody = document.getElementById("cart-table-body");
 const subtotalAmount = document.getElementById("subtotal-amount");
 const totalAmount = document.getElementById("total-amount");
@@ -442,8 +458,11 @@ document.addEventListener("DOMContentLoaded", () => {
     (sum, item) => sum + item.salePrice * item.quantity,
     0
   );
-  document.getElementById("subtotal").textContent = `$${total}`;
-  document.getElementById("total").textContent = `$${total}`;
+  const subtotalEl = document.getElementById("subtotal");
+  const totalEl = document.getElementById("total");
+
+  if (subtotalEl) subtotalEl.textContent = `$${total}`;
+  if (totalEl) totalEl.textContent = `$${total}`;
 
   placeOrderBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -469,3 +488,132 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+document.addEventListener("click", function (e) {
+  const heartIcon = e.target.closest(".wishlist-icon");
+  if (heartIcon) {
+    const productId = parseInt(heartIcon.dataset.id);
+    const product = products.find((p) => p.id === productId);
+
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const exists = wishlist.find((item) => item.id === productId);
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 1000,
+      timerProgressBar: true,
+      background: "#fff",
+      color: "#000",
+    });
+
+    if (!exists) {
+      wishlist.push(product);
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      Toast.fire({
+        icon: "success",
+        title: "Added to wishlist",
+      });
+    } else {
+      Toast.fire({
+        icon: "info",
+        title: "Already in wishlist",
+      });
+    }
+  }
+});
+
+const wishlistContainer = document.getElementById("wishlist-container");
+const clearWishlistBtn = document.getElementById("clear-wishlist");
+const moveToCartBtn = document.getElementById("move-to-cart");
+
+function renderWishlist() {
+  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  wishlistContainer.innerHTML = "";
+
+  wishlist.forEach((product, index) => {
+    const discount = Math.round(
+      ((product.price - product.salePrice) / product.price) * 100
+    );
+    wishlistContainer.innerHTML += `
+      <div class="col-md-4 mb-4">
+        <div class="product-card">
+          <div class="remove-wishlist" data-index="${index}">
+           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000000" viewBox="0 0 24 24">
+             <path d="M9 3v1H4v2h1v14a2 2 0 002 2h10a2 2 0 002-2V6h1V4h-5V3H9zm2 2h2v1h-2V5zm5 14H8V6h8v13z"/>
+             <path d="M10 8h1v9h-1zm3 0h1v9h-1z"/>
+           </svg>
+          </div>
+          <img src="${product.image}" alt="${product.name}" class="product-image">
+          <h4>${product.name}</h4>
+          <div class="price">
+            <strong>$${product.salePrice}</strong>
+            <s>$${product.price}</s>
+            <span class="discount">${discount}%</span>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+wishlistContainer.addEventListener("click", function (e) {
+  const deleteBtn = e.target.closest(".remove-wishlist");
+  if (deleteBtn) {
+    const index = deleteBtn.dataset.index;
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to remove this item from your wishlist?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+        wishlist.splice(index, 1);
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        renderWishlist();
+
+        Swal.fire("Deleted!", "The item has been removed.", "success");
+      }
+    });
+  }
+});
+
+clearWishlistBtn.addEventListener("click", () => {
+  Swal.fire({
+    title: "Clear Wishlist?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      localStorage.removeItem("wishlist");
+      renderWishlist();
+    }
+  });
+});
+
+moveToCartBtn.addEventListener("click", () => {
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  wishlist.forEach((item) => {
+    const exists = cart.find((p) => p.id === item.id);
+    if (exists) {
+      exists.quantity += 1;
+    } else {
+      cart.push({ ...item, quantity: 1 });
+    }
+  });
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.removeItem("wishlist");
+  renderWishlist();
+  Swal.fire("Success", "All items moved to cart", "success");
+});
+
+renderWishlist();
