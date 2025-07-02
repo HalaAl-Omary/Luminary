@@ -464,29 +464,31 @@ document.addEventListener("DOMContentLoaded", () => {
   if (subtotalEl) subtotalEl.textContent = `$${total}`;
   if (totalEl) totalEl.textContent = `$${total}`;
 
-  placeOrderBtn.addEventListener("click", (e) => {
-    e.preventDefault();
+  if (placeOrderBtn) {
+    placeOrderBtn.addEventListener("click", (e) => {
+      e.preventDefault();
 
-    const name = document.getElementById("fullname").value.trim();
-    const address = document.getElementById("address").value.trim();
-    const phone = document.getElementById("phone").value.trim();
+      const name = document.getElementById("fullname").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const phone = document.getElementById("phone").value.trim();
 
-    if (!name || !address || !phone) {
-      Swal.fire("Error", "Please fill in all required fields.", "error");
-      return;
-    }
+      if (!name || !address || !phone) {
+        Swal.fire("Error", "Please fill in all required fields.", "error");
+        return;
+      }
 
-    localStorage.removeItem("cart");
+      localStorage.removeItem("cart");
 
-    Swal.fire({
-      icon: "success",
-      title: "Order sent successfully",
-      text: "We will contact you soon to deliver your order.",
-    }).then(() => {
-      form.reset();
-      window.location.href = "index.html";
+      Swal.fire({
+        icon: "success",
+        title: "Order sent successfully",
+        text: "We will contact you soon to deliver your order.",
+      }).then(() => {
+        form.reset();
+        window.location.href = "index.html";
+      });
     });
-  });
+  }
 });
 
 document.addEventListener("click", function (e) {
@@ -528,6 +530,7 @@ const clearWishlistBtn = document.getElementById("clear-wishlist");
 const moveToCartBtn = document.getElementById("move-to-cart");
 
 function renderWishlist() {
+  if (!wishlistContainer) return;
   const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
   wishlistContainer.innerHTML = "";
 
@@ -556,64 +559,68 @@ function renderWishlist() {
     `;
   });
 }
+if (wishlistContainer) {
+  wishlistContainer.addEventListener("click", function (e) {
+    const deleteBtn = e.target.closest(".remove-wishlist");
+    if (deleteBtn) {
+      const index = deleteBtn.dataset.index;
+      Swal.fire({
+        title: "Are you sure?",
+        text: "Do you want to remove this item from your wishlist?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+          wishlist.splice(index, 1);
+          localStorage.setItem("wishlist", JSON.stringify(wishlist));
+          renderWishlist();
+          Swal.fire("Deleted!", "The item has been removed.", "success");
+        }
+      });
+    }
+  });
+}
 
-wishlistContainer.addEventListener("click", function (e) {
-  const deleteBtn = e.target.closest(".remove-wishlist");
-  if (deleteBtn) {
-    const index = deleteBtn.dataset.index;
-
+if (clearWishlistBtn) {
+  clearWishlistBtn.addEventListener("click", () => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "Do you want to remove this item from your wishlist?",
+      title: "Clear Wishlist?",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes",
     }).then((result) => {
       if (result.isConfirmed) {
-        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-        wishlist.splice(index, 1);
-        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        localStorage.removeItem("wishlist");
         renderWishlist();
-
-        Swal.fire("Deleted!", "The item has been removed.", "success");
+        Swal.fire("Cleared!", "Your wishlist has been cleared.", "success");
       }
     });
-  }
-});
-
-clearWishlistBtn.addEventListener("click", () => {
-  Swal.fire({
-    title: "Clear Wishlist?",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonText: "Yes",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      localStorage.removeItem("wishlist");
-      renderWishlist();
-    }
   });
-});
+}
 
-moveToCartBtn.addEventListener("click", () => {
-  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+if (moveToCartBtn) {
+  moveToCartBtn.addEventListener("click", () => {
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  wishlist.forEach((item) => {
-    const exists = cart.find((p) => p.id === item.id);
-    if (exists) {
-      exists.quantity += 1;
-    } else {
-      cart.push({ ...item, quantity: 1 });
-    }
+    wishlist.forEach((item) => {
+      const exists = cart.find((p) => p.id === item.id);
+      if (exists) {
+        exists.quantity += 1;
+      } else {
+        cart.push({ ...item, quantity: 1 });
+      }
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.removeItem("wishlist");
+    renderWishlist();
+    Swal.fire("Success", "All items moved to cart", "success");
   });
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-  localStorage.removeItem("wishlist");
-  renderWishlist();
-  Swal.fire("Success", "All items moved to cart", "success");
-});
+}
 
 renderWishlist();
