@@ -4,10 +4,11 @@
 **Luminary** is a modern, responsive e-commerce platform designed to showcase and sell natural care products. The platform features an elegant user interface, dynamic product management, cart and wishlist functionality, user authentication, and a smooth checkout experience — all built using only HTML, CSS, Bootstrap, and JavaScript.
 
 ---
-
 ## 🌐 Live Preview
 
 🔗 [GitHub Pages Deployment](https://halaal-omary.github.io/Luminary/)  
+🔗 [Netlify Deployment](https://luminry.netlify.app/)  
+🔗 [Render Deployment](https://luminary-umav.onrender.com/)  
 📦 [GitHub Repository](https://github.com/HalaAl-Omary/Luminary)
 
 ---
