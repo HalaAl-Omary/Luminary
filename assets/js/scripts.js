@@ -124,7 +124,7 @@ const products = [
     name: "Pure Face",
     price: 35,
     salePrice: 30,
-    image: "assets/images/skincare4.png",
+    image: "assets/images/Skincare4.png",
     category: "Skincare",
   },
   {
@@ -132,7 +132,7 @@ const products = [
     name: "Clear Complex",
     price: 55,
     salePrice: 50,
-    image: "assets/images/skincare5.png",
+    image: "assets/images/Skincare5.png",
     category: "Skincare",
   },
   {
@@ -140,7 +140,7 @@ const products = [
     name: "Youth Dew",
     price: 90,
     salePrice: 85,
-    image: "assets/images/skincare6.png",
+    image: "assets/images/Skincare6.png",
     category: "Skincare",
   },
   {
@@ -293,6 +293,18 @@ categoryButtons.forEach((btn) => {
 });
 document.addEventListener("click", function (e) {
   if (e.target.closest(".cart-button")) {
+    const currentUser = JSON.parse(localStorage.getItem("user"));
+
+    if (!currentUser) {
+      Swal.fire({
+        icon: "warning",
+        title: "Login Required",
+        text: "You must log in before adding items to your cart.",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
+
     const button = e.target.closest(".cart-button");
     const productId = parseInt(
       button.closest(".product-card").querySelector(".wishlist-icon").dataset.id
@@ -361,7 +373,7 @@ function updateCartHTML() {
       <td>$${item.salePrice}</td>
       <td>
         <div class="quantity-controls" data-index="${index}">
-          <button class="mx-2 btn btn-sm btn-outline-secondary decrease">−</button>
+          <button class="mx-2 btn btn-sm btn-outline-secondary decrease">-</button>
           <span class="mx-2 quantity-display">${item.quantity}</span>
           <button class="mx-2 btn btn-sm btn-outline-secondary increase">+</button>
         </div>
@@ -622,5 +634,18 @@ if (moveToCartBtn) {
     Swal.fire("Success", "All items moved to cart", "success");
   });
 }
-
 renderWishlist();
+
+window.addEventListener("load", function () {
+  const loader = document.getElementById("loader");
+
+  setTimeout(() => {
+    loader.style.opacity = "0";
+    loader.style.transition = "opacity 0.5s ease";
+
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 500);
+  }, 1000); 
+});
+

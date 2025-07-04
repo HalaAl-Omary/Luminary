@@ -74,11 +74,11 @@ nav ol a {
 }
 
 .header-home-slider figure:nth-child(1) {
-  background-image: url(../images/header7.png);
+  background-image: url(../images/header8.png);
   animation-delay: 0s;
 }
 .header-home-slider figure:nth-child(2) {
-  background-image: url(../images/header2.png);
+  background-image: url(../images/hrader4.png);
   animation-delay: -2s;
 }
 .header-home-slider figure:nth-child(3) {
@@ -86,7 +86,7 @@ nav ol a {
   animation-delay: -4s;
 }
 .header-home-slider figure:nth-child(4) {
-  background-image: url(../images/hrader4.png);
+  background-image: url(../images/header2.png);
   animation-delay: -6s;
 }
 .header-home-slider figure:nth-child(5) {
@@ -98,7 +98,7 @@ nav ol a {
   animation-delay: -10s;
 }
 .header-home-slider figure:nth-child(7) {
-  background-image: url(../images/header8.png);
+  background-image: url(../images/header3.png);
   animation-delay: -12s;
 }
 .header-home-slider figure:nth-child(8) {
@@ -1419,18 +1419,50 @@ input.form-control.me-2 {
   transform: scale(1.1);
   background-color: #ffeaea;
 }
-#clear-wishlist{
+#clear-wishlist {
   background-color: var(--browen-g);
   color: var(--whitee);
 }
-#clear-wishlist:hover{
+#clear-wishlist:hover {
   background-color: var(--brow-f);
 }
-#move-to-cart{
+#move-to-cart {
   background-color: var(--browen-g);
   color: var(--whitee);
 }
-#move-to-cart:hover{
+#move-to-cart:hover {
   background-color: var(--brow-f);
 }
 
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(232, 203, 178, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#loader img {
+  width: 140px;
+  animation: pulse 1.4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
