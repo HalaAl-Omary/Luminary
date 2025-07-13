@@ -670,6 +670,7 @@ footer .about-section ul {
 .container-Contact-page:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px var(--brow-f);
+
 }
 
 .Contact-page-call {

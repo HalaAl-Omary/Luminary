@@ -461,6 +461,7 @@ if (checkoutBtn) {
 }
 
 updateCartHTML();
+
 document.addEventListener("DOMContentLoaded", () => {
   const placeOrderBtn = document.getElementById("place-order");
   const form = document.getElementById("checkout-form");
@@ -613,9 +614,20 @@ if (clearWishlistBtn) {
     });
   });
 }
-
 if (moveToCartBtn) {
   moveToCartBtn.addEventListener("click", () => {
+    const currentUser = JSON.parse(localStorage.getItem("user"));
+
+    if (!currentUser) {
+      Swal.fire({
+        icon: "warning",
+        title: "Login Required",
+        text: "Please log in to move items to cart.",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
+
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -631,11 +643,18 @@ if (moveToCartBtn) {
     localStorage.setItem("cart", JSON.stringify(cart));
     localStorage.removeItem("wishlist");
     renderWishlist();
-    Swal.fire("Success", "All items moved to cart", "success");
+    Swal.fire({
+      icon: "success",
+      title: "All items moved to cart",
+      text: "Redirecting to cart...",
+      timer: 1500,
+      showConfirmButton: false,
+    }).then(() => {
+      window.location.href = "Cart.html";
+    });
   });
 }
 renderWishlist();
-
 window.addEventListener("load", function () {
   const loader = document.getElementById("loader");
 
@@ -646,6 +665,5 @@ window.addEventListener("load", function () {
     setTimeout(() => {
       loader.style.display = "none";
     }, 500);
-  }, 1000); 
+  }, 1000);
 });
-
